@@ -38,43 +38,6 @@
     <!-- Header Section Begin -->
     @include('website.fixed.header')
     <!-- Header Section End -->
-    {{-- ------------------------------------- feature product ----------------------- --}}
-
-
-    {{-- <div class="py-5">
-        <div class="container ">
-            <div class="row">
-                <h2>Featured Product</h2>
-                <div class="owl-carousel owl-theme owl-img-responsive">
-                    <div class="row">
-
-                        @foreach ($product as $item)
-                            <div class="item">
-                                <div class="card ">
-                                    <img src="{{ url('/uploads/uploads/product/', $item->image) }}"
-                                        style="border-radius:4px" margin-left="20%" height="200px" width="200px"
-                                        alt="product image">
-                                    <div class="card-body">
-                                        <h5>Name: {{ $item->name }}</h5>
-                                        <span class="float-start">Price: {{ $item->price }}</span>
-                                        <p>
-                                            Short description: {{ $item->description }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-
-    <!-- Categories Section Begin banner-->
-    @include('website.fixed.banner')
-    <!-- Categories Section End -->
 
     <!-- Product Section Begin -->
     <section class="product spad">
@@ -84,9 +47,7 @@
     </section>
     <!-- Product Section End -->
 
-    <!-- Banner slider Section Begin -->
-    @include('website.fixed.slider')
-    <!-- Banner Section End -->
+
 
     <!-- Footer Section Begin -->
     @include('website.fixed.footer')
@@ -102,24 +63,7 @@
         </div>
     </div>
     <!-- Search End -->
-    {{-- <script>
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        })
-    </script> --}}
+
     <!-- Js Plugins -->
     <script src="{{ url('frontend/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url('frontend/js/bootstrap.min.js') }}"></script>

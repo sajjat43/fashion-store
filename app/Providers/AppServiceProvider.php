@@ -28,12 +28,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $categories = Category::all();
-        // $brand = Brand::all();
-        // $product = Product::where('featured', '1')->get();
+        $categories = Category::all();
+        $brand = Brand::all();
 
-        // view::share('categories',  $categories);
-        // view::share('brand',  $brand);
-        // view::share('product', $product);
+        $product = Product::all();
+
+        view::share('categories',  $categories);
+        view::share('brand',  $brand);
+
+        view::share('product', $product);
+        
     }
 }

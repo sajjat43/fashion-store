@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function home()
     {
         $product = Product::all();
-        return view('website.master', compact('product'));
+        return view('website.pages.home.home', compact('product'));
     }
     public function userLogin()
     {

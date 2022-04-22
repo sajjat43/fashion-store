@@ -265,8 +265,6 @@ class ProductController extends Controller
 
     public function addToCart($id)
     {
-
-
         $product = Product::find($id);
         if (!$product) {
             return redirect()->back()->with('message', 'no product found');
@@ -307,6 +305,7 @@ class ProductController extends Controller
             return redirect()->back()->with('message', 'product added to cart');
         }
         $cartExit[$id]['product_qty'] = $cartExit[$id]['product_qty'] + 1;
+        $cartExit[$id]['sub_total'] = $cartExit[$id]['sub_total'] * $cartExit[$id]['product_qty'];
 
         session()->put('cart', $cartExit);
         return redirect()->back()->with('success', 'product add');
@@ -323,33 +322,15 @@ class ProductController extends Controller
         $carts = session()->get('cart');
         $product = Product::find($product_id);
 
-
-
         // if($product->available_quantity>=$request->quantity)
         // {
         $carts[$product_id]['product_qty'] = $request->product_qty;
-        $carts[$product_id]['sub_total'] = $request->product_qty * $carts[$product_id]['sub_total'];
+        $carts[$product_id]['sub_total'] =  $carts[$product_id]['product_qty'] * $carts[$product_id]['sub_total'];
 
 
         session()->put('cart', $carts);
         return redirect()->back()->with('message', 'Quantity update');
-        // }
-        // Toastr::error('Stock Out', 'Sorry !!!');
-        // return redirect()->back();
     }
-
-
-    //-----------remove individual item--------
-    // public function removeCart(request $request)
-    // {
-    //     $cartExit::remove($request->id);
-    //     // session()->forget($request->id);
-    //     session()->forget('success', 'Item Cart Remove Successfully !');
-
-    //     return redirect()->back()->with('success', 'item cleared successfully');
-    // }
-
-    // -------------------cheak out / oder-------------------
 
     public function checkOut(request $request)
     {
@@ -411,14 +392,14 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         // dd($product);
-        return view('website.pages.productSingleView', compact('product'));
+        return view('website.pages.singleView', compact('product'));
     }
 
     // featured product slider
 
     public function featured_product()
     {
-        $product = Product::where('featured', '1')->take(10)->get();
+        $product = Product::where('featured', '1')->take(3)->get();
         return view('website.pages.featured.featuredProduct', compact('product'));
     }
 }
